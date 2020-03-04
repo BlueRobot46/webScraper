@@ -5,6 +5,35 @@ import sys
 from selenium import webdriver
 import time
 
+#User info question
+
+userNum = int(input("How many users would you like to add?"))
+print(userNum)
+# Create dictionary for user input
+
+account = []
+
+accountValue = []
+
+user = {}
+
+#Logic to check for if there are more than one user account being added.
+
+numUser = False
+
+if userNum >= 2:
+    numUser = True
+
+#Collects user information and stores that into a list.
+while len(accountValue) < userNum:
+    userAcc = str(input("Username:"))
+    account.append(userAcc)
+    userPass = str(input("Password:"))
+    accountValue.append(userPass)
+    print(numUser)
+    print(account)
+    print(accountValue)
+
 # Calls on webdriver module to open chrome.
 driver = webdriver.Chrome('C:\webDrivers/chromedriver.exe')
 
