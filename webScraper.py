@@ -6,11 +6,16 @@ from selenium import webdriver
 import time
 
 #User info question
+while True:
+    try:
+        userNum = int(input("How many users would you like to add?"))
+        break
+    except ValueError:
+        print("Please input a number instead.")
 
-userNum = int(input("How many users would you like to add?"))
-print(userNum)
+print("Adding " + str(userNum) + " user accounts.")
+
 # Create dictionary for user input
-
 account = []
 
 accountValue = []
@@ -18,7 +23,6 @@ accountValue = []
 user = {}
 
 #Logic to check for if there are more than one user account being added.
-
 numUser = False
 
 if userNum >= 2:
