@@ -39,29 +39,38 @@ while len(accountValue) < userNum:
     print(account)
     print(accountValue)
 #Create a list, wrap the code for opening chrome in a while loop break out of the loop once the length of the code reaches a certain number.
-chromeIteration = []
+chromeIteration = 0
 
-# Calls on webdriver module to open chrome.
-driver = webdriver.Chrome('C:\webDrivers/chromedriver.exe')
+while chromeIteration < len(account):
+    if chromeIteration >= len(account):
+        break
+    print(len(account))
+    print(chromeIteration)
+    # Calls on webdriver module to open chrome.
+    driver = webdriver.Chrome('C:\webDrivers/chromedriver.exe')
 
-driver.get("https://www.nike.com/launch")
+    driver.get("https://www.nike.com/launch")
 
-time.sleep(3);
-button1 = driver.find_element_by_css_selector('#root > div > div > div.main-layout > div > header > div.d-sm-h.d-lg-b > section > ul > li.member-nav-item.d-sm-ib.va-sm-m > button')
-clickButton = button1.click();
+    time.sleep(3);
+    button1 = driver.find_element_by_css_selector('#root > div > div > div.main-layout > div > header > div.d-sm-h.d-lg-b > section > ul > li.member-nav-item.d-sm-ib.va-sm-m > button')
+    clickButton = button1.click();
 
-#inputing Username
-pyperclip.copy(account[0]);
-button2 = driver.find_element_by_xpath('/html/body/div[2]/div/div/div[2]/div/div/div/div/div/div/div/div/div/div/div/div/div/div/div[2]/form/div[2]/input');
-button2.click();
-button2.send_keys(Keys.CONTROL, 'v');
+    #inputing Username
+    pyperclip.copy(account[chromeIteration]);
+    button2 = driver.find_element_by_xpath('/html/body/div[2]/div/div/div[2]/div/div/div/div/div/div/div/div/div/div/div/div/div/div/div[2]/form/div[2]/input');
+    button2.click();
+    button2.send_keys(Keys.CONTROL, 'v');
 
-#inputing Username value
-pyperclip.copy(accountValue[0])
-button3 = driver.find_element_by_xpath('/html/body/div[2]/div/div/div[2]/div/div/div/div/div/div/div/div/div/div/div/div/div/div/div[2]/form/div[3]/input')
-button3.click();
-button3.send_keys(Keys.CONTROL, 'v')
+    #inputing Username value
+    pyperclip.copy(accountValue[chromeIteration])
+    button3 = driver.find_element_by_xpath('/html/body/div[2]/div/div/div[2]/div/div/div/div/div/div/div/div/div/div/div/div/div/div/div[2]/form/div[3]/input')
+    button3.click();
+    button3.send_keys(Keys.CONTROL, 'v')
 
-#Login
-loginButton = driver.find_element_by_xpath('/html/body/div[2]/div/div/div[2]/div/div/div/div/div/div/div/div/div/div/div/div/div/div/div[2]/form/div[6]/input')
-loginButton.click();
+    #Login
+    loginButton = driver.find_element_by_xpath('/html/body/div[2]/div/div/div[2]/div/div/div/div/div/div/div/div/div/div/div/div/div/div/div[2]/form/div[6]/input')
+    loginButton.click();
+
+    #Add to chrome iteration list to start next login sequence.
+    chromeIteration = chromeIteration + 1
+
